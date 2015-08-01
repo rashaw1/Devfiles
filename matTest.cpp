@@ -37,6 +37,9 @@ int main(int argc, char* argv[])
   Matrix sum = M+M2;
   std::cout << "sM + M squared is:" << sum;
   std::cout << "Element 1,1 of sum is: " << sum.getElement(1, 1) << "\n";
-  
+  Matrix N(2, 2);
+  std::cout << N;
+  N = M2;
+  std::cout << N;
   return 0;
 }

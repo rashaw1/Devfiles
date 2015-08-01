@@ -253,6 +253,10 @@ Matrix copy(const Matrix& M, int mCol, int mRow)
 //Overloaded operators
 Matrix& Matrix::operator=(const Matrix& M)
 {
+  for(int i = 0; i<width; i++){
+    delete[] elements[i];
+  }
+  delete[] elements;
   height = M.getHeight();
   width = M.getWidth();
   init();
