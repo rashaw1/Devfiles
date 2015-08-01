@@ -2,6 +2,7 @@
 
 #include "matrix.hpp"
 #include <iomanip>
+#include <new>
 
 //Initialise arrays (to zero)
 void Matrix::init(){
@@ -30,8 +31,13 @@ Matrix::Matrix(double** M, int n, int m)
   init();
   for(int i = 0; i < height; i++){
     for(int j = 0; j < width; j++){
-      //Need to add out_of_bounds error checking
+      //Catch out_of_bounds errors, without breaking
+      try {
       elements[i][j] = M[i][j];
+      }
+      catch (std::bad_alloc& ba) {
+	std::cout << "Initialising matrix the wrong size!";
+      } 
     }
   }
 }
